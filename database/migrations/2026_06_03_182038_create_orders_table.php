@@ -11,11 +11,17 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+        $table->string('customer_name');
+        $table->string('email')->nullable();
+        $table->string('phone');
+        $table->text('address');
+        $table->decimal('total', 10, 2);
+        $table->string('status')->default('pending');
+        $table->timestamps();
         });
     }
 
@@ -24,7 +30,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('orders');
     }
