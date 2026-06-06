@@ -1,3 +1,4 @@
+Student Name: Hibe Alsalih
 # Online Store Management System
 
 This is a Laravel-based web project developed for the Advanced Web Programming course.  
