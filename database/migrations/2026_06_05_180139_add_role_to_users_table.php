@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contacts', function (Blueprint $table) {
-            $table->id();
-        $table->string('name');
-        $table->string('email');
-        $table->string('subject');
-        $table->text('message');
-        $table->boolean('is_read')->default(false);
-        $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('role')->default('user')->after('password');  //
         });
     }
 
@@ -29,8 +23,10 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down():void
+    public function down(): void
     {
-        Schema::dropIfExists('contacts');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('role');  //
+        });
     }
 };

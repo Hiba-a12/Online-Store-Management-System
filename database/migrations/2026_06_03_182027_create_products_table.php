@@ -11,20 +11,20 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up(): void
+    
+     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-        $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
-        $table->string('title');
-        $table->text('description')->nullable();
-        $table->string('image')->nullable();
-        $table->decimal('price', 10, 2);
-        $table->integer('stock')->default(0);
-        $table->decimal('discount', 5, 2)->default(0);
-        $table->boolean('featured')->default(false);
-        $table->boolean('status')->default(true);
-        $table->timestamps();
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->string('title');
+            $table->string('keywords')->nullable();
+            $table->text('description')->nullable();
+            $table->decimal('price', 10, 2);
+            $table->integer('stock')->default(0);
+            $table->string('image')->nullable();
+            $table->boolean('status')->default(1);
+            $table->timestamps();
         });
     }
 
@@ -38,3 +38,5 @@ return new class extends Migration
         Schema::dropIfExists('products');
     }
 };
+
+
