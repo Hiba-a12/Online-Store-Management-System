@@ -1,7 +1,7 @@
 Student Name: Hibe Alsalih
 Admin Login:
 Email: admin@gmail.com
-Password: password
+Password: sent to professor via email
 
 # Online Store Management System
 
